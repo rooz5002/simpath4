@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SIMPATH 4 — Access Blocked</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #0d0d1a;
+      color: #e0e0f0;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    .logo {
+      font-size: 2.2rem;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      margin-bottom: 6px;
+    }
+    .logo strong { font-weight: 700; color: #2196f3; }
+
+    .icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #ff5252;
+    }
+
+    .title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #ff5252;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+
+    .message {
+      font-size: 0.85rem;
+      color: #888;
+      text-align: center;
+      line-height: 1.7;
+      max-width: 340px;
+      margin-bottom: 32px;
+    }
+
+    .contact {
+      font-size: 0.8rem;
+      color: #555;
+      margin-bottom: 6px;
+    }
+    .contact a {
+      color: #2196f3;
+      text-decoration: none;
+    }
+
+    .machine-id {
+      font-size: 0.7rem;
+      color: #333;
+      font-family: monospace;
+      margin-top: 24px;
+    }
+
+    .btn {
+      margin-top: 28px;
+      padding: 9px 28px;
+      background: transparent;
+      border: 1px solid #333;
+      color: #666;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn:hover { border-color: #555; color: #aaa; }
+
+    .copyright {
+      position: absolute;
+      bottom: 16px;
+      font-size: 0.7rem;
+      color: #2a2a4a;
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">SIMPATH <strong>4</strong></div>
+
+  <br />
+
+  <div class="icon">&#9940;</div>
+  <div class="title">License Blocked</div>
+
+  <div class="message">
+    This installation has been blocked by the software publisher.<br />
+    If you believe this is an error, please contact support.
+  </div>
+
+  <div class="contact">
+    Contact: <a href="mailto:amir@rooz.co.uk">amir@rooz.co.uk</a>
+  </div>
+  <div class="contact">
+    Website: <a href="https://www.roboticser.com/simpath">roboticser.com/simpath</a>
+  </div>
+
+  <div class="machine-id" id="mid"></div>
+
+  <button class="btn" onclick="window.close()">Close</button>
+
+  <div class="copyright">© 2025 Amir Ali Mokhtarzadeh</div>
+
+  <script>
+    window.addEventListener('message', (e) => {
+      if (e.data?.machineId) {
+        const el = document.getElementById('mid')
+        if (el) el.textContent = 'Machine ID: ' + e.data.machineId
+      }
+    })
+  </script>
+</body>
+</html>

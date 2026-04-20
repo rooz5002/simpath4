@@ -1,0 +1,64 @@
+name: Build & Release
+
+# Triggers on version tags: git tag v0.2.0 && git push --tags
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-22.04
+
+    steps:
+      # ── 1. Checkout ──────────────────────────────────────────────────────────
+      - uses: actions/checkout@v4
+
+      # ── 2. Node.js ───────────────────────────────────────────────────────────
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # ── 3. C++ build dependencies ────────────────────────────────────────────
+      - name: Install C++ deps
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y \
+            cmake ninja-build \
+            libboost-all-dev \
+            libssl-dev \
+            python3-dev \
+            libpybind11-dev
+
+      # ── 4. Build 2D + 3D engines ─────────────────────────────────────────────
+      - name: Build C++ engines
+        env:
+          SIMPATH_HMAC_SECRET: ${{ secrets.SIMPATH_HMAC_SECRET }}
+        run: |
+          cmake -S . -B engine-build \
+            -G Ninja \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DSIMPATH_HMAC_SECRET="${SIMPATH_HMAC_SECRET}"
+          cmake --build engine-build --parallel
+
+      # ── 5. GUI dependencies ──────────────────────────────────────────────────
+      - name: Install GUI dependencies
+        run: cd gui && npm ci
+
+      # ── 6. Build & publish Electron app to GitHub Releases ──────────────────
+      - name: Build & publish release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SIMPATH_HMAC_SECRET: ${{ secrets.SIMPATH_HMAC_SECRET }}
+        run: |
+          cd gui
+          npm run electron:dist -- --publish always
+
+      # ── 7. Upload build artefacts (optional debug) ───────────────────────────
+      - name: Upload AppImage
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: linux-appimage
+          path: gui/release/*.AppImage
+          retention-days: 7

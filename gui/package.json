@@ -1,0 +1,81 @@
+{
+  "name": "simpath4",
+  "version": "0.1.0",
+  "description": "Path Planning Simulation Platform",
+  "author": "Amir Ali Mokhtarzadeh <amir@rooz.co.uk>",
+  "homepage": "https://www.roboticser.com/simpath",
+  "private": true,
+  "type": "module",
+  "main": "electron-compiled/main.js",
+  "scripts": {
+    "dev":              "vite",
+    "build":            "tsc && vite build",
+    "preview":          "vite preview",
+    "electron:compile": "tsc -p tsconfig.electron.json && echo '{\"type\":\"commonjs\"}' > electron-compiled/package.json",
+    "electron:dev":     "npm run build && npm run electron:compile && electron .",
+    "electron:dist":    "npm run build && npm run electron:compile && electron-builder"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "three": "^0.165.0",
+    "@react-three/fiber": "^8.17.2",
+    "@react-three/drei": "^9.109.0",
+    "zustand": "^4.5.2",
+    "electron-updater": "^6.3.4"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@types/three": "^0.165.0",
+    "@types/node": "^20.14.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "typescript": "^5.5.2",
+    "vite": "^5.3.1",
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.roboticser.simpath4",
+    "productName": "SIMPATH 4",
+    "copyright": "© 2025 Amir Ali Mokhtarzadeh",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron-compiled/**/*",
+      "splash.html",
+      "blocked.html"
+    ],
+    "extraResources": [
+      {
+        "from": "../engine-build/engine/simpath4_engine",
+        "to":   "engine/simpath4_engine"
+      },
+      {
+        "from": "../methods",
+        "to":   "methods"
+      },
+      {
+        "from": "../methods3d",
+        "to":   "methods3d"
+      }
+    ],
+    "linux": {
+      "target": ["AppImage", "deb"],
+      "category": "Science"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "publish": {
+      "provider": "github",
+      "owner":    "rooz5002",
+      "repo":     "simpath4"
+    }
+  }
+}

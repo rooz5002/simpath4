@@ -1,0 +1,33 @@
+Simpath4:
+
+A path planning simulation program 
+
+
+1- simulation gui program C++ program, comes with two classic, and one machine learning method
+2- plugin paths in python files
+3- update checker standard program C++
+4- model training gui python program
+5- data and graph generated C++ program
+6- ROS2 integraion program
+7- Navigation program
+
+
+
+
+
+Serverside at 69.10.35.60
+
+  End-to-end working — new machine gets auto-enrolled and receives a    
+  30-day key.                                                        
+                                                                        
+  Status: everything is now operational without needing a domain.
+                                                                        
+  When you eventually point rooz.com to this VPS, migrating is just:
+  1. One line in licenseCheck.ts: 'http://69.10.35.60:8000' →           
+  'https://api.rooz.com'                                                
+  2. Run /root/ssl-setup-api.sh on the server (already there, cert      
+  script ready)                                                         
+  3. OLS vhost rename from api.roboticser.com to api.rooz.com           
+                                                               
+  For now the app is fully wired up.      
+                      

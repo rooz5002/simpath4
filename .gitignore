@@ -1,0 +1,36 @@
+# Build artifacts
+engine-build/
+gui/node_modules/
+gui/dist/
+gui/release/
+gui/electron-compiled/
+
+# Python cache
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.pyd
+
+# Private dev documents
+development-log.docx
+development-plan.md
+
+# User workspace data
+workspace/*.simpath
+workspace/*.simpath3d
+workspace/App-source.zip
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Secrets (never commit these)
+*.secret
+secrets.h
+.env

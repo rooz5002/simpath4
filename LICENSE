@@ -1,0 +1,30 @@
+SIMPATH 4 — Proprietary Software License
+Copyright © 2025 Amir Ali Mokhtarzadeh. All rights reserved.
+
+This source code is made available for reference and transparency purposes.
+Commercial use, redistribution, or modification is subject to the following terms:
+
+1. PERMITTED USE
+   - You may read, study, and locally build this software for personal,
+     educational, or evaluation purposes.
+   - You may create and share algorithm plugins (.py files) that run on top of
+     SIMPATH 4, provided they do not redistribute the core engine source.
+
+2. COMMERCIAL USE
+   - Any production, commercial, or research use of SIMPATH 4 (including the
+     compiled binaries) requires a valid license key issued by the author.
+   - Visit https://www.roboticser.com/simpath to purchase a license.
+
+3. RESTRICTIONS
+   - You may not redistribute, sublicense, sell, or embed the core engine or
+     GUI source in other products without explicit written permission.
+   - You may not remove or alter license validation, copyright notices, or
+     branding present in the software.
+   - You may not use this software to build a competing path-planning product.
+
+4. DISCLAIMER
+   THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND. THE AUTHOR
+   SHALL NOT BE LIABLE FOR ANY DAMAGES ARISING FROM THE USE OF THIS SOFTWARE.
+
+For licensing enquiries: amir@rooz.co.uk
+Website: https://www.roboticser.com/simpath
